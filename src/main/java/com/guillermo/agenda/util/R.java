@@ -1,5 +1,5 @@
 
-package com.guillermo.gestor.util;
+package com.guillermo.agenda.util;
 
 import java.io.File;
 import java.net.URL;

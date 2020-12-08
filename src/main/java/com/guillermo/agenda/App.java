@@ -1,7 +1,7 @@
 
-package com.guillermo.gestor;
+package com.guillermo.agenda;
 
-import com.guillermo.gestor.util.R;
+import com.guillermo.agenda.util.R;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
