@@ -1,4 +1,3 @@
-
 package com.guillermo.agenda;
 
 import com.guillermo.agenda.DAO.Conexion_DAO;
@@ -16,7 +15,6 @@ import java.util.ArrayList;
 
 /**
  * @author Guillermo Suarez
- *
  */
 public class APPController {
     public ListView<Persona> lvLista;
@@ -29,29 +27,32 @@ public class APPController {
     public Button btEditar;
     public Button btEliminar;
     public Button btBuscar;
-    private Herramientas tool;
-    private Persona_DAO persona_dao;
+    private final Herramientas tool;
+    private final Persona_DAO persona_dao;
 
-    public APPController(){
+    public APPController() {
         Conexion_DAO baseDatos = new Conexion_DAO();
-        persona_dao= new Persona_DAO();
+        persona_dao = new Persona_DAO();
         tool = new Herramientas();
-            try {
-                baseDatos.conectar();
-            } catch (ClassNotFoundException e) {
-                tool.alertaError("Error critico, programa dañado");
-            } catch (SQLException throwables) {
-                tool.alertaError("Error al conectar con la base de datos");
-            }
-    }
-    public void cargarDatos() {
-        ArrayList<Persona> lista = null;
         try {
-            lista = persona_dao.listar();
+            persona_dao.conectar();
+        } catch (ClassNotFoundException e) {
+            tool.alertaError("Error critico, programa dañado");
         } catch (SQLException throwables) {
-            tool.alertaError("No se ha podido eliminar el coche");
+            tool.alertaError("Error al conectar con la base de datos");
+        }
+    }
+
+    public void cargarDatos() {
+        ArrayList<Persona> lista = new ArrayList<>();
+        try {
+            lista = tool.persona_con_telefono();
+        } catch (SQLException throwables) {
+            tool.alertaError("Error al carga los datos");
         }
         lvLista.setItems(FXCollections.observableArrayList(lista));
+
+
     }
 
 }
