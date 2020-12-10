@@ -3,6 +3,7 @@ package com.guillermo.agenda;
 import com.guillermo.agenda.DAO.Conexion_DAO;
 import com.guillermo.agenda.DAO.Persona_DAO;
 import com.guillermo.agenda.beans.Persona;
+import com.guillermo.agenda.beans.Telefono;
 import com.guillermo.agenda.util.Herramientas;
 import javafx.collections.FXCollections;
 import javafx.event.Event;
@@ -11,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextArea;
+
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -24,7 +26,7 @@ public class APPController {
     public Label lbApellidos;
     public Label lbDireccion;
     public Label lbTelefono_1;
-    public Label getLbTelefono_2;
+    public Label lbTelefono_2;
     public TextArea txNotas;
     public Button btNuevo;
     public Button btEditar;
@@ -46,6 +48,9 @@ public class APPController {
         }
     }
 
+    /**
+     * Método que carga en el ListView todos los datos de las personas al inicio d ela aplicación.
+     */
     public void cargarDatos() {
         ArrayList<Persona> lista = new ArrayList<>();
         try {
@@ -57,12 +62,31 @@ public class APPController {
 
 
     }
+
+    /**
+     * Método que muestra en la pantalla principal toda la informacion de la clase persona
+     * @param event
+     */
     @FXML
     public void seleccionarPersona(Event event){
         Persona p= lvLista.getSelectionModel().getSelectedItem();
+        ArrayList<Telefono> telefono = p.getTelefono();
         lbNombre.setText(p.getNombre());
         lbApellidos.setText(p.getApellidos());
         lbDireccion.setText(tool.direccionCompleta(p.getDireccion(),p.getCodigo_postal(),p.getPoblacion()));
+        //controlamos erroes al acceder en el Array si este no contiene todos los campos
+        if (!telefono.isEmpty()){
+            lbTelefono_1.setText(String.valueOf(telefono.get(0)));
+        }else{
+            lbTelefono_1.setText("");
+        }
+
+        if (telefono.size() == 2){
+            lbTelefono_2.setText(String.valueOf(telefono.get(1)));
+        }else{
+            lbTelefono_2.setText("");
+        }
+        txNotas.setText(p.getNotas());
 
 
     }
