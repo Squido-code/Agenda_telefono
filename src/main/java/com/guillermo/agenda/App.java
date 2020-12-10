@@ -11,10 +11,6 @@ import javafx.stage.Stage;
  * @author Guillermo Suarez
  */
 public class App extends Application {
-    public static void main(String[] args) {
-        launch();
-    }
-
     @Override
     public void init() throws Exception {
         super.init();
@@ -39,6 +35,9 @@ public class App extends Application {
         stage.setScene(scene);
         //mostramos el teatro
         stage.show();
+    }
+    public static void main(String[] args) {
+        launch();
     }
 }
 

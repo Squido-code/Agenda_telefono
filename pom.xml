@@ -16,6 +16,11 @@
     <dependencies>
         <dependency>
             <groupId>org.openjfx</groupId>
+            <artifactId>javafx-base</artifactId>
+            <version>16-ea+5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
             <version>14</version>
         </dependency>
@@ -50,6 +55,18 @@
                 <configuration>
                     <mainClass>com.guillermo.agenda.App</mainClass>
                 </configuration>
+                <executions>
+                    <execution>
+                        <!-- Configuration for debugging -->
+                        <id>debug</id>
+                        <configuration>
+                            <options>
+                                <option>-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=*:8000</option>
+                            </options>
+                            <mainClass>com.guillermo.agenda.App</mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
