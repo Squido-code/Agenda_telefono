@@ -1,7 +1,9 @@
 package com.guillermo.agenda.util;
 
 import com.guillermo.agenda.DAO.Persona_DAO;
+import com.guillermo.agenda.DAO.Telefono_DAO;
 import com.guillermo.agenda.beans.Persona;
+import com.guillermo.agenda.beans.Telefono;
 import javafx.scene.control.Alert;
 
 import java.sql.SQLException;
@@ -23,14 +25,24 @@ public class Herramientas {
     }
 
     /**
-     * Método que rellena el atributo telefono de la clase persona.
-     *
-     * @return String
+     * Método que añade los telefonos asignados al id de la persona.
+     * @param p
+     * @return Persona
      * @throws SQLException
      */
-    public ArrayList<Persona> persona_con_telefono() throws SQLException {
+    public Persona personaCompleta(Persona p) throws SQLException {
         Persona_DAO personaDAO = new Persona_DAO();
-        //creamos lista de personas sin telefonos
+        Telefono_DAO telefonoDAO = new Telefono_DAO();
+        ArrayList<Telefono> listaTelefonos;
+        listaTelefonos= telefonoDAO.listarTelefonos(p);
+        p.setTelefono(listaTelefonos);
+        return p;
+    }
+
+
+    public ArrayList<Persona> Listas_personas_completa() throws SQLException {
+        Herramientas tool = new Herramientas();
+        Persona_DAO personaDAO = new Persona_DAO();
         ArrayList<Persona> listaPersonas;
         //obtenemos todas las personas sin telefonos
         listaPersonas = personaDAO.listar();
@@ -39,11 +51,11 @@ public class Herramientas {
         //desgranamos cada persona
         for (Persona p : listaPersonas
         ) {
-            //vamos llenando el array del atributo telefono
-           p.setTelefono(personaDAO.listarTelefonos(p.getId_persona()));
-
+            Persona pCompleta = new Persona();
+            //completamos cada persona con sus telefonos
+            pCompleta=tool.personaCompleta(p);
             //añadimos la persona completa a una nueva lista
-            listaCompleta.add(p);
+            listaCompleta.add(pCompleta);
         }
         return listaCompleta;
     }

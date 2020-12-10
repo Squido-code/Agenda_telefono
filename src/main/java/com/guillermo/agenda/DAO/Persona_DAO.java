@@ -12,7 +12,7 @@ import java.util.HashMap;
 
 
 /**
- * @author squid
+ * @author Guillermo Suarez
  */
 public class Persona_DAO extends Conexion_DAO implements interfaz_DAO<Persona> {
 

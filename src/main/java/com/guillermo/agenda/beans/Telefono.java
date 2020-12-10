@@ -31,4 +31,7 @@ public class Telefono {
     public void setNumero(String numero) {
         this.numero = numero;
     }
+    public String toString(){
+        return getNombre()+": "+getNumero();
+    }
 }

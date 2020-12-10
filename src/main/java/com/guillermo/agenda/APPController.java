@@ -49,7 +49,7 @@ public class APPController {
     public void cargarDatos() {
         ArrayList<Persona> lista = new ArrayList<>();
         try {
-            lista = tool.persona_con_telefono();
+            lista = tool.Listas_personas_completa();
         } catch (SQLException throwables) {
             tool.alertaError("Error al cargar los datos");
         }
