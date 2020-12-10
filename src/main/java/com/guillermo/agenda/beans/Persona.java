@@ -1,6 +1,7 @@
 package com.guillermo.agenda.beans;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * @author squid
@@ -9,7 +10,7 @@ public class Persona {
     private int id_persona;
     private String nombre;
     private String apellidos;
-    private ArrayList<String> telefono;
+    private HashMap<Integer,String> telefono;
     private String direccion;
     private String codigo_postal;
     private String poblacion;
@@ -39,11 +40,11 @@ public class Persona {
         this.id_persona = id_persona;
     }
 
-    public ArrayList<String> getTelefono() {
+    public HashMap<Integer,String> getTelefono() {
         return telefono;
     }
 
-    public void setTelefono(ArrayList<String> telefono) {
+    public void setTelefono(HashMap<Integer,String> telefono) {
         this.telefono = telefono;
     }
 

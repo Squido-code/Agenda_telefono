@@ -48,7 +48,7 @@ public class APPController {
         try {
             lista = tool.persona_con_telefono();
         } catch (SQLException throwables) {
-            tool.alertaError("Error al carga los datos");
+            tool.alertaError("Error al cargar los datos");
         }
         lvLista.setItems(FXCollections.observableArrayList(lista));
 

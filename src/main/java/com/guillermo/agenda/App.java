@@ -28,7 +28,7 @@ public class App extends Application {
         //cargamos todo el codigo dentro de un vbox
         VBox vbox = loader.load();
         //una vez cargada la pantalla cargamos los datos
-        //controller.cargarDatos();
+        controller.cargarDatos();
         //creamos una escena donde esta el vbox
         Scene scene = new Scene(vbox);
         //cargamos esa escena dentro del excenario que es la applicacion

@@ -8,6 +8,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 
 /**
@@ -37,31 +38,71 @@ public class Persona_DAO extends Conexion_DAO implements interfaz_DAO<Persona> {
         return listaPersonas;
     }
 
-    public ArrayList<String> listarTelefonos(int id_persona) throws SQLException {
+    public HashMap<Integer,String> listarTelefonos(int id_persona) throws SQLException {
         String sql = "SELECT * FROM telefonos where id_persona = ?";
         ResultSet rs = null;
-        ArrayList<String> listaTelefonos = new ArrayList<>();
+        HashMap<Integer,String> listaTelefonos = new HashMap<>();
         PreparedStatement st = conexion.prepareStatement(sql);
         st.setInt(1, id_persona);
         rs = st.executeQuery();
         while (rs.next()) {
-            listaTelefonos.add(rs.getString("telefono"));
+            listaTelefonos.put(rs.getInt("id_telefono"),rs.getString("numero"));
         }
         return listaTelefonos;
     }
 
     @Override
     public void insertar(Persona p) throws SQLException {
-
+        String sql = "INSERT INTO personas (nombre,apellidos,direccion,codigo postal,poblacion,notas) values (?,?,?,?,?,?)";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setString(1, p.getNombre());
+        sentencia.setString(2, p.getApellidos());
+        sentencia.setString(3,p.getDireccion());
+        sentencia.setString(4,p.getCodigo_postal());
+        sentencia.setString(5,p.getPoblacion());
+        sentencia.setString(6,p.getNotas());
+        sentencia.executeUpdate();
+    }
+    public void insertarTelefono(String telefono,Persona p) throws SQLException {
+        String sql = "INSERT INTO telefonos (numero,id_persona) values (?,?)";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setString(1, telefono);
+        sentencia.setInt(2, p.getId_persona());
+        sentencia.executeUpdate();
     }
 
     @Override
-    public void update(int id) throws SQLException {
-
+    public void modificar(Persona pAntiguo, Persona pNueva) throws SQLException {
+        String sql = "UPDATE personas SET nombre = ?, apellidos = ?, direccion = ?,poblacion = ?,codigo postal = ?, notas = ? WHERE id_persona = ?";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setString(1, pNueva.getNombre());
+        sentencia.setString(2, pNueva.getApellidos());
+        sentencia.setString(3,pNueva.getDireccion());
+        sentencia.setString(4,pNueva.getCodigo_postal());
+        sentencia.setString(5,pNueva.getPoblacion());
+        sentencia.setString(6,pNueva.getNotas());
+        sentencia.setInt(7,pAntiguo.getId_persona());
+        sentencia.executeUpdate();
+    }
+    public void modificarTelefono(int numero,Persona p){
+        String sql = "UPDATE telefono SET numero = ? WHERE id_telefono = ?";
     }
 
     @Override
-    public void eliminar(int id) throws SQLException {
+    public void eliminar(Persona p) throws SQLException {
 
+    }
+    public int obtener_id(Persona p) throws SQLException {
+        int id_persona=0;
+        String sql = "SELECT id_persona from personas where nombre=? AND apellidos=?";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setString(1, p.getNombre());
+        sentencia.setString(2, p.getApellidos());
+        ResultSet rs = null;
+        rs = sentencia.executeQuery();
+        while (rs.next()) {
+            id_persona=rs.getInt("id_persona");
+        }
+        return id_persona;
     }
 }
