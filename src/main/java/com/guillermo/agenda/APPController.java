@@ -5,6 +5,8 @@ import com.guillermo.agenda.DAO.Persona_DAO;
 import com.guillermo.agenda.beans.Persona;
 import com.guillermo.agenda.util.Herramientas;
 import javafx.collections.FXCollections;
+import javafx.event.Event;
+import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -19,7 +21,8 @@ import java.util.ArrayList;
 public class APPController {
     public ListView<Persona> lvLista;
     public Label lbNombre;
-    public Label Direccion;
+    public Label lbApellidos;
+    public Label lbDireccion;
     public Label lbTelefono_1;
     public Label getLbTelefono_2;
     public TextArea txNotas;
@@ -51,6 +54,15 @@ public class APPController {
             tool.alertaError("Error al cargar los datos");
         }
         lvLista.setItems(FXCollections.observableArrayList(lista));
+
+
+    }
+    @FXML
+    public void seleccionarPersona(Event event){
+        Persona p= lvLista.getSelectionModel().getSelectedItem();
+        lbNombre.setText(p.getNombre());
+        lbApellidos.setText(p.getApellidos());
+        lbDireccion.setText(tool.direccionCompleta(p.getDireccion(),p.getCodigo_postal(),p.getPoblacion()));
 
 
     }

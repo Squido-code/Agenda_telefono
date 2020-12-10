@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="460.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -35,24 +35,24 @@
         </Menu>
       </menus>
     </MenuBar>
-    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="ALWAYS">
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="410.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
       <children>
-            <ListView fx:id="lvLista" layoutX="383.0" layoutY="34.0" prefHeight="202.0" prefWidth="231.0" />
-            <Label layoutX="49.0" layoutY="63.0" text="Nombre:" />
-            <Label layoutX="49.0" layoutY="95.0" text="Direccion:" />
-            <Label fx:id="lbNombre" layoutX="104.0" layoutY="63.0" prefHeight="18.0" prefWidth="114.0" />
+            <ListView fx:id="lvLista" layoutX="383.0" layoutY="34.0" onMouseClicked="#seleccionarPersona" prefHeight="202.0" prefWidth="231.0" />
+            <Label layoutX="48.0" layoutY="95.0" text="Nombre:" />
+            <Label layoutX="46.0" layoutY="143.0" text="Direccion:" />
+            <Label fx:id="lbNombre" layoutX="104.0" layoutY="63.0" prefHeight="18.0" prefWidth="91.0" />
             <Label fx:id="lbDireccion" layoutX="104.0" layoutY="95.0" />
-            <Label layoutX="48.0" layoutY="128.0" text="Telefono:" />
+            <Label layoutX="48.0" layoutY="170.0" text="Telefono:" />
             <Label fx:id="lbTelefono_1" layoutX="104.0" layoutY="128.0" />
             <Label fx:id="lbTelefono2" layoutX="104.0" layoutY="152.0" />
-            <Label layoutX="48.0" layoutY="178.0" text="Notas:" />
-            <TextArea fx:id="txNotas" layoutX="96.0" layoutY="178.0" prefHeight="163.0" prefWidth="187.0" />
+            <Label layoutX="48.0" layoutY="208.0" text="Notas:" />
+            <TextArea fx:id="txNotas" layoutX="96.0" layoutY="217.0" prefHeight="163.0" prefWidth="187.0" />
             <ScrollBar fx:id="scLista" layoutX="607.0" layoutY="34.0" orientation="VERTICAL" prefHeight="202.0" prefWidth="14.0" />
             <Button fx:id="btNuevo" layoutX="357.0" layoutY="260.0" mnemonicParsing="false" text="Nuevo" />
             <Button fx:id="btEditar" layoutX="424.0" layoutY="260.0" mnemonicParsing="false" text="Editar" />
             <Button fx:id="btEliminar" layoutX="490.0" layoutY="260.0" mnemonicParsing="false" text="Eliminar" />
             <Button fx:id="btBuscar" layoutX="569.0" layoutY="260.0" mnemonicParsing="false" text="Buscar" />
-            <Label layoutX="136.0" layoutY="16.0" prefHeight="35.0" prefWidth="107.0" text="AGENDA">
+            <Label layoutX="136.0" layoutY="45.0" prefHeight="35.0" prefWidth="107.0" text="AGENDA">
                <font>
                   <Font size="24.0" />
                </font>
@@ -62,6 +62,9 @@
                   <Font size="14.0" />
                </font>
             </Label>
+            <Label fx:id="lbApellidos" layoutX="243.0" layoutY="63.0" />
+            <Label fx:id="lbApellidos1" layoutX="47.0" layoutY="119.0" text="Apellidos:" />
+            <Button fx:id="btNuevo1" layoutX="155.0" layoutY="388.0" mnemonicParsing="false" text="Guardar notas" />
       </children>
     </AnchorPane>
   </children>

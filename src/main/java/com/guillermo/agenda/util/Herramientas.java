@@ -25,7 +25,7 @@ public class Herramientas {
     /**
      * Método que rellena el atributo telefono de la clase persona.
      *
-     * @return
+     * @return String
      * @throws SQLException
      */
     public ArrayList<Persona> persona_con_telefono() throws SQLException {
@@ -46,5 +46,17 @@ public class Herramientas {
             listaCompleta.add(p);
         }
         return listaCompleta;
+    }
+
+    /**
+     * Método que combina los campos direccion, codigo postal y poblacion para crear una única String.
+     * @param dire
+     * @param codP
+     * @param pob
+     * @return String
+     */
+    public String direccionCompleta(String dire,String codP,String pob){
+        String todo = dire+" CP: "+codP+" "+pob;
+        return todo;
     }
 }
