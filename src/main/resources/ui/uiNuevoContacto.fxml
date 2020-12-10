@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox prefHeight="253.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="400.0" prefWidth="538.0" VBox.vgrow="ALWAYS">
+         <children>
+            <Label layoutX="37.0" layoutY="48.0" text="Nombre:" />
+            <Label layoutX="37.0" layoutY="77.0" text="Apellidos:" />
+            <Label layoutX="37.0" layoutY="110.0" text="Dirección:" />
+            <Label layoutX="22.0" layoutY="139.0" text="Código postal:" />
+            <Label layoutX="37.0" layoutY="169.0" text="Población:" />
+            <Label layoutX="296.0" layoutY="64.0" prefHeight="18.0" prefWidth="61.0" text="Teléfono 1:" />
+            <Label layoutX="395.0" layoutY="30.0" text="Nombre" />
+            <Label layoutX="523.0" layoutY="30.0" text="Número" />
+            <TextField fx:id="txNombre" layoutX="99.0" layoutY="44.0" />
+            <TextField fx:id="txApellidos" layoutX="99.0" layoutY="73.0" />
+            <TextField fx:id="txDireccion" layoutX="99.0" layoutY="106.0" />
+            <TextField fx:id="txCodigo_postal" layoutX="99.0" layoutY="135.0" />
+            <TextField fx:id="txPoblacion" layoutX="99.0" layoutY="165.0" />
+            <TextField fx:id="txTelefonoNombre1" layoutX="377.0" layoutY="56.0" prefHeight="26.0" prefWidth="102.0" />
+            <TextField fx:id="txtelefonoNumero1" layoutX="494.0" layoutY="56.0" prefHeight="26.0" prefWidth="123.0" />
+            <Label layoutX="296.0" layoutY="102.0" prefHeight="18.0" prefWidth="61.0" text="Teléfono 2:" />
+            <TextField fx:id="txtelefonoNumero2" layoutX="494.0" layoutY="98.0" prefHeight="26.0" prefWidth="123.0" />
+            <TextField fx:id="txTelefonoNombre2" layoutX="377.0" layoutY="98.0" prefHeight="26.0" prefWidth="102.0" />
+            <Button fx:id="btAceptar" layoutX="399.0" layoutY="165.0" mnemonicParsing="false" text="Aceptar" />
+            <Button fx:id="btCancelar" layoutX="479.0" layoutY="165.0" mnemonicParsing="false" text="Cancelar" />
+         </children>
+    </AnchorPane>
+  </children>
+</VBox>

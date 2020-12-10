@@ -1,4 +1,4 @@
-package com.guillermo.agenda;
+package com.guillermo.agenda.controllers;
 
 import com.guillermo.agenda.DAO.Conexion_DAO;
 import com.guillermo.agenda.DAO.Persona_DAO;
@@ -87,7 +87,9 @@ public class APPController {
             lbTelefono_2.setText("");
         }
         txNotas.setText(p.getNotas());
-
+    }
+    @FXML
+    public void nuevoContacto(){
 
     }
 

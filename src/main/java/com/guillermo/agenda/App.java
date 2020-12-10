@@ -1,11 +1,15 @@
 package com.guillermo.agenda;
 
+import com.guillermo.agenda.controllers.APPController;
 import com.guillermo.agenda.util.R;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
+
+import java.io.IOException;
 
 /**
  * @author Guillermo Suarez
@@ -36,8 +40,24 @@ public class App extends Application {
         //mostramos el teatro
         stage.show();
     }
+    public void nuevoContactoUi() throws IOException {
+        //me creo el loader para poder cargar la pantalla
+        FXMLLoader loader = new FXMLLoader();
+        //loader carga la pantalla
+        loader.setLocation(R.getUI("Nuevo_contacto_controller.fxml"));
+        //cargo la clase donde esta el codigo vincula a la ventana
+        APPController controller = new APPController();
+        loader.setController(controller);
+        AnchorPane anchorPane = (AnchorPane) loader.load();
+        Stage ventana = new Stage();
+        ventana.setTitle("Nuevo Contacto");
+        Scene scene = new Scene(anchorPane);
+        ventana.setScene(scene);
+        ventana.showAndWait();
+    }
     public static void main(String[] args) {
         launch();
     }
+
 }
 
