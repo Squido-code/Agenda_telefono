@@ -15,7 +15,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox prefHeight="506.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<VBox prefHeight="568.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
   <children>
     <MenuBar VBox.vgrow="NEVER">
       <menus>
@@ -56,29 +56,45 @@
         </Menu>
       </menus>
     </MenuBar>
-      <TabPane prefHeight="491.0" prefWidth="640.0" tabClosingPolicy="UNAVAILABLE">
+      <TabPane prefHeight="554.0" prefWidth="640.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
           <Tab text="Inicio">
             <content>
-              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="439.0" prefWidth="640.0">
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="530.0" prefWidth="640.0">
                      <children>
                         <Label layoutX="55.0" layoutY="58.0" prefHeight="18.0" prefWidth="52.0" text="Nombre:" />
-                        <Label layoutX="55.0" layoutY="84.0" text="Apellidos:" />
-                        <Label layoutX="55.0" layoutY="111.0" text="Dirección:" />
-                        <Label layoutX="56.0" layoutY="139.0" text="Teléfono:" />
+                        <Label layoutX="55.0" layoutY="96.0" text="Apellidos:" />
+                        <Label layoutX="55.0" layoutY="196.0" text="Dirección:" />
+                        <Label layoutX="56.0" layoutY="135.0" text="Teléfono:" />
                         <Label fx:id="lbNombre" layoutX="120.0" layoutY="59.0" prefHeight="18.0" prefWidth="106.0" text="Label" />
-                        <Label fx:id="lbApellidos" layoutX="120.0" layoutY="84.0" text="Label" />
-                        <Label fx:id="lbDireccion" layoutX="120.0" layoutY="111.0" text="Label" />
-                        <Label fx:id="lbTelefono1" layoutX="120.0" layoutY="139.0" text="Label" />
-                        <Label fx:id="lbTelefono2" layoutX="120.0" layoutY="163.0" text="Label" />
-                        <Label layoutX="67.0" layoutY="212.0" text="Notas:" />
-                        <TextArea fx:id="txNotas" layoutX="126.0" layoutY="212.0" prefHeight="200.0" prefWidth="200.0" />
-                        <ScrollPane layoutX="395.0" layoutY="63.0" prefHeight="238.0" prefWidth="212.0">
+                        <Label fx:id="lbApellidos" layoutX="120.0" layoutY="96.0" text="Label" />
+                        <Label fx:id="lbDireccion" layoutX="120.0" layoutY="196.0" text="Label" />
+                        <Label fx:id="lbTelefono1" layoutX="120.0" layoutY="135.0" text="Label" />
+                        <Label fx:id="lbTelefono2" layoutX="120.0" layoutY="167.0" text="Label" />
+                        <Label layoutX="56.0" layoutY="287.0" text="Notas:" />
+                        <TextArea fx:id="txNotas" layoutX="119.0" layoutY="296.0" prefHeight="200.0" prefWidth="200.0" />
+                        <ScrollPane layoutX="414.0" layoutY="67.0" prefHeight="238.0" prefWidth="212.0">
                            <content>
                               <ListView fx:id="lvLista" onMouseClicked="#seleccionarPersona" prefHeight="236.0" prefWidth="209.0" />
                            </content>
                         </ScrollPane>
-                        <Button fx:id="btEditarnotas" layoutX="355.0" layoutY="379.0" mnemonicParsing="false" onAction="#editarNotas" text="Editar notas" />
+                        <Button fx:id="btEditarnotas" layoutX="344.0" layoutY="454.0" mnemonicParsing="false" onAction="#editarNotas" text="Editar notas" />
+                        <TextField fx:id="txNombreEdit" layoutX="120.0" layoutY="56.0" visible="false" />
+                        <TextField fx:id="txApellidosEdit" layoutX="120.0" layoutY="92.0" visible="false" />
+                        <TextField fx:id="txDireEdit" layoutX="120.0" layoutY="192.0" prefHeight="26.0" prefWidth="152.0" visible="false" />
+                        <TextField fx:id="txCpEdit" layoutX="120.0" layoutY="224.0" prefHeight="26.0" prefWidth="153.0" visible="false" />
+                        <TextField fx:id="txPoblaEdit" layoutX="119.0" layoutY="260.0" prefHeight="26.0" prefWidth="154.0" visible="false" />
+                        <Label fx:id="lbCP" layoutX="76.0" layoutY="229.0" text="C.P" visible="false" />
+                        <Label fx:id="lbPoblacion" layoutX="58.0" layoutY="264.0" text="Población" visible="false" />
+                        <Button fx:id="btEditarContacto" disable="true" layoutX="414.0" layoutY="314.0" mnemonicParsing="false" onAction="#editarContacto" text="Editar contacto" />
+                        <TextField fx:id="txt1NonmbreEdit" layoutX="158.0" layoutY="131.0" prefHeight="26.0" prefWidth="98.0" visible="false" />
+                        <TextField fx:id="txt1NumeroEdit" layoutX="308.0" layoutY="131.0" prefHeight="26.0" prefWidth="98.0" visible="false" />
+                        <TextField fx:id="txt2NonmbreEdit" layoutX="158.0" layoutY="164.0" prefHeight="26.0" prefWidth="97.0" visible="false" />
+                        <TextField fx:id="txt2NumeroEdit" layoutX="308.0" layoutY="163.0" prefHeight="26.0" prefWidth="98.0" visible="false" />
+                        <Label fx:id="lbnumero1edit" layoutX="272.0" layoutY="136.0" text="Nº" visible="false" />
+                        <Label fx:id="lbnumero2edit" layoutX="272.0" layoutY="167.0" text="Nº:" visible="false" />
+                        <Label fx:id="lbt1nombreedit" layoutX="120.0" layoutY="135.0" text="Nombre:" visible="false" />
+                        <Label fx:id="lbt2nombreedit" layoutX="120.0" layoutY="167.0" text="Nombre:" visible="false" />
                      </children>
                   </AnchorPane>
             </content>

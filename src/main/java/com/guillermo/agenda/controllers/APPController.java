@@ -8,7 +8,6 @@ import com.guillermo.agenda.util.Herramientas;
 import javafx.collections.FXCollections;
 import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -16,31 +15,10 @@ import java.util.ArrayList;
 /**
  * @author Guillermo Suarez
  */
-public class APPController {
-    public ListView<Persona> lvLista;
-    public Label lbNombre;
-    public Label lbApellidos;
-    public Label lbDireccion;
-    public Label lbTelefono1;
-    public Label lbTelefono2;
-    public TextArea txNotas;
-    public Button btNuevoContacto;
-    public Button BorrarRegistro;
-    public Button btEditarNotas;
-    public Button btEliminar;
-    public Button btBuscar;
-    public TextField txNNombre = new TextField();
-    public TextField txNApellido;
-    public TextField txNdireccion;
-    public TextField txNcp;
-    public TextField txNpoblacion;
-    public TextField txNtf1Nombre;
-    public TextField txNtf1Numero;
-    public TextField txNtf2Nombre;
-    public TextField txNtf2Numero;
-    private final Herramientas tool;
-    private PersonaDAO persona_dao;
-    private TelefonoDAO telefonoDao;
+public class APPController extends APPControllerHerramientas{
+
+    private Herramientas tool;
+
 
 
     public APPController() {
@@ -90,6 +68,7 @@ public class APPController {
             lbTelefono2.setText("");
         }
         txNotas.setText(p.getNotas());
+        btEditarContacto.setDisable(false);
     }
 
     /**
@@ -103,14 +82,15 @@ public class APPController {
         Telefono t1 = new Telefono();
         Telefono t2 = new Telefono();
 
-
         p.setNombre(txNNombre.getText());
         p.setApellidos(txNApellido.getText());
         p.setDireccion(txNdireccion.getText());
         p.setCodigo_postal(txNcp.getText());
         p.setPoblacion(txNpoblacion.getText());
+
         t1.setNombre(txNtf1Nombre.getText());
         t1.setNumero(txNtf1Numero.getText());
+
         t2.setNombre(txNtf2Nombre.getText());
         t2.setNumero(txNtf2Numero.getText());
         /*controlamos que se metan el nombre y el apellido,
@@ -188,6 +168,13 @@ public class APPController {
         } catch (SQLException throwables) {
             tool.alertaError("No se ha podido conectar a la base de datos");
         }
+    }
+    @FXML
+    private void editarContacto(){
+        modoEdicionContacto(true);
+        edicionTxField();
+
+
 
     }
 }

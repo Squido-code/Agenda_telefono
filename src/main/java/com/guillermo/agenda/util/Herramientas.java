@@ -74,7 +74,7 @@ public class Herramientas {
      * @return String
      */
     public String direccionCompleta(String dire, String codP, String pob) {
-        String todo = dire + " CP: " + codP + " " + pob;
+        String todo = dire +"\n"+ "CP: " + codP +"\n"+ pob;
         return todo;
     }
 

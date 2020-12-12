@@ -96,6 +96,7 @@ public class PersonaDAO extends ConexionDAO implements interfazDAO<Persona> {
         }
         return id_persona;
     }
+
     public void editarNota(Persona p) throws SQLException {
         String sql = "UPDATE personas set notas = ? where id_persona=?";
         PreparedStatement sentencia = conexion.prepareStatement(sql);
