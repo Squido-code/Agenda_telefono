@@ -59,4 +59,9 @@ public class TelefonoDAO extends ConexionDAO implements interfazDAO<Telefono> {
     public void eliminar(Telefono object) throws SQLException {
 
     }
+
+    @Override
+    public int id(Telefono object) throws SQLException {
+        return 0;
+    }
 }

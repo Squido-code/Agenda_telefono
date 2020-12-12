@@ -75,15 +75,15 @@ public class PersonaDAO extends ConexionDAO implements interfazDAO<Persona> {
         sentencia.setInt(7,pAntiguo.getId_persona());
         sentencia.executeUpdate();
     }
-    public void modificarTelefono(int numero,Persona p){
-        String sql = "UPDATE telefono SET numero = ? WHERE id_telefono = ?";
-    }
 
     @Override
     public void eliminar(Persona p) throws SQLException {
 
     }
-    public int obtener_id(Persona p) throws SQLException {
+
+
+    @Override
+    public int id(Persona p) throws SQLException {
         int id_persona=0;
         String sql = "SELECT id_persona from personas where nombre=? AND apellidos=?";
         PreparedStatement sentencia = conexion.prepareStatement(sql);
@@ -95,5 +95,12 @@ public class PersonaDAO extends ConexionDAO implements interfazDAO<Persona> {
             id_persona=rs.getInt("id_persona");
         }
         return id_persona;
+    }
+    public void editarNota(Persona p) throws SQLException {
+        String sql = "UPDATE personas set notas = ? where id_persona=?";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setString(1, p.getNotas());
+        sentencia.setInt(2,p.getId_persona());
+        sentencia.executeUpdate();
     }
 }

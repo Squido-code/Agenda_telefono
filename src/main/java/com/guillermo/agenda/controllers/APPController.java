@@ -26,7 +26,7 @@ public class APPController {
     public TextArea txNotas;
     public Button btNuevoContacto;
     public Button BorrarRegistro;
-    public Button btEditar;
+    public Button btEditarNotas;
     public Button btEliminar;
     public Button btBuscar;
     public TextField txNNombre = new TextField();
@@ -92,6 +92,9 @@ public class APPController {
         txNotas.setText(p.getNotas());
     }
 
+    /**
+     * Método que inserta un nuevo contacto en la base de datos
+     */
     @FXML
     public void nuevoContacto() {
         PersonaDAO pdao = new PersonaDAO();
@@ -120,7 +123,7 @@ public class APPController {
         try {
             pdao.conectar();
             pdao.insertar(p);
-            int idPersona=pdao.obtener_id(p);
+            int idPersona=pdao.id(p);
             pdao.desconectar();
             /*
             Controlamos que haya telefonos antes de hacer el insert
@@ -155,6 +158,9 @@ public class APPController {
         borrarRegistro();
     }
 
+    /**
+     * Método que borra los textfields de la zona de nuevo contacto.
+     */
     @FXML
     private void borrarRegistro() {
         txNNombre.setText("");
@@ -167,5 +173,21 @@ public class APPController {
         txNtf2Nombre.setText("");
         txNtf2Numero.setText("");
     }
+    @FXML
+    private void editarNotas(){
+        PersonaDAO personaDAO = new PersonaDAO();
+        Persona p = lvLista.getSelectionModel().getSelectedItem();
+        p.setNotas(txNotas.getText());
+        try {
+            personaDAO.conectar();
+            personaDAO.editarNota(p);
+            personaDAO.desconectar();
+            tool.alertaInfo("Notas actualizadas correctamente");
+        } catch (ClassNotFoundException e) {
+            tool.alertaError("Error crítico");
+        } catch (SQLException throwables) {
+            tool.alertaError("No se ha podido conectar a la base de datos");
+        }
 
+    }
 }

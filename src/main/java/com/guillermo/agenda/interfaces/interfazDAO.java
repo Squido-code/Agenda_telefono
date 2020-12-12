@@ -9,6 +9,7 @@ public interface interfazDAO<B> {
     void insertar(B object) throws SQLException;
     void modificar(B object, B object2) throws SQLException;
     void eliminar(B object) throws SQLException;
+    int id(B object) throws  SQLException;
 
 
 }

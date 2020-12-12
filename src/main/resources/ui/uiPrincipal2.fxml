@@ -78,6 +78,7 @@
                               <ListView fx:id="lvLista" onMouseClicked="#seleccionarPersona" prefHeight="236.0" prefWidth="209.0" />
                            </content>
                         </ScrollPane>
+                        <Button fx:id="btEditarnotas" layoutX="355.0" layoutY="379.0" mnemonicParsing="false" onAction="#editarNotas" text="Editar notas" />
                      </children>
                   </AnchorPane>
             </content>
