@@ -4,16 +4,25 @@ package com.guillermo.agenda.beans;
  * @author Guillermo Suarez
  */
 public class Telefono {
-    private int id_telefono;
+    private  int idTelefono;
+    private int idPersona;
     private String nombre;
     private String numero;
 
-    public int getId_telefono() {
-        return id_telefono;
+    public int getIdTelefono() {
+        return idTelefono;
     }
 
-    public void setId_telefono(int id_telefono) {
-        this.id_telefono = id_telefono;
+    public void setIdTelefono(int idTelefono) {
+        this.idTelefono = idTelefono;
+    }
+
+    public int getIdPersona() {
+        return idPersona;
+    }
+
+    public void setIdPersona(int idPersona) {
+        this.idPersona = idPersona;
     }
 
     public String getNombre() {

@@ -29,7 +29,7 @@ public class PersonaDAO extends ConexionDAO implements interfazDAO<Persona> {
             persona.setNombre(rs.getString("nombre"));
             persona.setApellidos(rs.getString("apellidos"));
             persona.setDireccion(rs.getString("direccion"));
-            persona.setCodigo_postal(rs.getString("codigo postal"));
+            persona.setCodigo_postal(rs.getString("codigo_postal"));
             persona.setPoblacion(rs.getString("poblacion"));
             persona.setNotas(rs.getString("notas"));
             listaPersonas.add(persona);
@@ -52,21 +52,13 @@ public class PersonaDAO extends ConexionDAO implements interfazDAO<Persona> {
 
     @Override
     public void insertar(Persona p) throws SQLException {
-        String sql = "INSERT INTO personas (nombre,apellidos,direccion,codigo postal,poblacion,notas) values (?,?,?,?,?,?)";
+        String sql = "INSERT INTO personas (nombre,apellidos,direccion,codigo_postal,poblacion) values (?,?,?,?,?)";
         PreparedStatement sentencia = conexion.prepareStatement(sql);
-        sentencia.setString(1, p.getNombre());
-        sentencia.setString(2, p.getApellidos());
+        sentencia.setString(1,p.getNombre());
+        sentencia.setString(2,p.getApellidos());
         sentencia.setString(3,p.getDireccion());
         sentencia.setString(4,p.getCodigo_postal());
         sentencia.setString(5,p.getPoblacion());
-        sentencia.setString(6,p.getNotas());
-        sentencia.executeUpdate();
-    }
-    public void insertarTelefono(String telefono,Persona p) throws SQLException {
-        String sql = "INSERT INTO telefonos (numero,id_persona) values (?,?)";
-        PreparedStatement sentencia = conexion.prepareStatement(sql);
-        sentencia.setString(1, telefono);
-        sentencia.setInt(2, p.getId_persona());
         sentencia.executeUpdate();
     }
 

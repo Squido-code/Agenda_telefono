@@ -26,7 +26,7 @@ public class TelefonoDAO extends ConexionDAO implements interfazDAO<Telefono> {
 
         while (rs.next()) {
             Telefono t = new Telefono();
-            t.setId_telefono(rs.getInt("id_telefono"));
+            t.setIdPersona(rs.getInt("id_telefono"));
             t.setNombre(rs.getString("nombre"));
             t.setNumero(rs.getString("numero"));
             listaTelefonos.add(t);
@@ -41,8 +41,13 @@ public class TelefonoDAO extends ConexionDAO implements interfazDAO<Telefono> {
     }
 
     @Override
-    public void insertar(Telefono object) throws SQLException {
-
+    public void insertar(Telefono t) throws SQLException {
+        String sql = "INSERT INTO telefonos (id_persona,nombre,numero) values (?,?,?)";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setInt(1, t.getIdPersona());
+        sentencia.setString(2, t.getNombre());
+        sentencia.setString(3, t.getNumero());
+        sentencia.executeUpdate();
     }
 
     @Override

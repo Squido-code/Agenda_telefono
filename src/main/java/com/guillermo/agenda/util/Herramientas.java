@@ -26,6 +26,7 @@ public class Herramientas {
 
     /**
      * Método que añade los telefonos asignados al id de la persona.
+     *
      * @param p
      * @return Persona
      * @throws SQLException
@@ -35,7 +36,7 @@ public class Herramientas {
         TelefonoDAO telefonoDAO = new TelefonoDAO();
         telefonoDAO.conectar();
         ArrayList<Telefono> listaTelefonos;
-        listaTelefonos= telefonoDAO.listarTelefonos(p);
+        listaTelefonos = telefonoDAO.listarTelefonos(p);
         p.setTelefono(listaTelefonos);
         telefonoDAO.desconectar();
         return p;
@@ -56,7 +57,7 @@ public class Herramientas {
         ) {
             Persona pCompleta = new Persona();
             //completamos cada persona con sus telefonos
-            pCompleta=tool.personaCompleta(p);
+            pCompleta = tool.personaCompleta(p);
             //añadimos la persona completa a una nueva lista
             listaCompleta.add(pCompleta);
         }
@@ -66,13 +67,20 @@ public class Herramientas {
 
     /**
      * Método que combina los campos direccion, codigo postal y poblacion para crear una única String.
+     *
      * @param dire
      * @param codP
      * @param pob
      * @return String
      */
-    public String direccionCompleta(String dire,String codP,String pob){
-        String todo = dire+" CP: "+codP+" "+pob;
+    public String direccionCompleta(String dire, String codP, String pob) {
+        String todo = dire + " CP: " + codP + " " + pob;
         return todo;
+    }
+
+    public void alertaInfo(String string) {
+        Alert alerta = new Alert(Alert.AlertType.INFORMATION);
+        alerta.setContentText(string);
+        alerta.show();
     }
 }
