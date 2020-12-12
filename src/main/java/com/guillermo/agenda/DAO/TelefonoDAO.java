@@ -2,7 +2,7 @@ package com.guillermo.agenda.DAO;
 
 import com.guillermo.agenda.beans.Persona;
 import com.guillermo.agenda.beans.Telefono;
-import com.guillermo.agenda.interfaces.interfaz_DAO;
+import com.guillermo.agenda.interfaces.interfazDAO;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 /**
  * @author Guillermo Suarez
  */
-public class Telefono_DAO extends Conexion_DAO implements interfaz_DAO<Telefono> {
+public class TelefonoDAO extends ConexionDAO implements interfazDAO<Telefono> {
 
 
     public ArrayList<Telefono> listarTelefonos (Persona p) throws SQLException {

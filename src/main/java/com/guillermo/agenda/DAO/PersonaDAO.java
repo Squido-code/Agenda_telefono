@@ -1,9 +1,8 @@
 package com.guillermo.agenda.DAO;
 
 import com.guillermo.agenda.beans.Persona;
-import com.guillermo.agenda.interfaces.interfaz_DAO;
+import com.guillermo.agenda.interfaces.interfazDAO;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -14,7 +13,7 @@ import java.util.HashMap;
 /**
  * @author Guillermo Suarez
  */
-public class Persona_DAO extends Conexion_DAO implements interfaz_DAO<Persona> {
+public class PersonaDAO extends ConexionDAO implements interfazDAO<Persona> {
 
 
     @Override

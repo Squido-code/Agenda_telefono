@@ -8,6 +8,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.ScrollBar?>
 <?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
@@ -38,14 +39,14 @@
     <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="410.0" prefWidth="640.0" VBox.vgrow="ALWAYS">
       <children>
             <ListView fx:id="lvLista" layoutX="383.0" layoutY="34.0" onMouseClicked="#seleccionarPersona" prefHeight="202.0" prefWidth="231.0" />
-            <Label layoutX="48.0" layoutY="95.0" text="Nombre:" />
-            <Label layoutX="46.0" layoutY="143.0" text="Direccion:" />
-            <Label fx:id="lbNombre" layoutX="109.0" layoutY="94.0" prefHeight="18.0" prefWidth="270.0" />
-            <Label fx:id="lbDireccion" layoutX="105.0" layoutY="142.0" prefHeight="18.0" prefWidth="270.0" />
-            <Label layoutX="48.0" layoutY="170.0" text="Telefono:" />
-            <Label fx:id="lbTelefono_1" layoutX="104.0" layoutY="169.0" prefHeight="18.0" prefWidth="231.0" />
+            <Label layoutX="47.0" layoutY="103.0" text="Nombre:" />
+            <Label layoutX="45.0" layoutY="150.0" text="Direccion:" />
+            <Label fx:id="lbNombre" layoutX="100.0" layoutY="102.0" prefHeight="18.0" prefWidth="270.0" />
+            <Label fx:id="lbDireccion" layoutX="105.0" layoutY="149.0" prefHeight="18.0" prefWidth="270.0" />
+            <Label layoutX="45.0" layoutY="169.0" text="Telefono:" />
+            <Label fx:id="lbTelefono_1" layoutX="105.0" layoutY="169.0" prefHeight="18.0" prefWidth="231.0" />
             <Label fx:id="lbTelefono_2" layoutX="105.0" layoutY="198.0" prefHeight="18.0" prefWidth="231.0" />
-            <Label layoutX="54.0" layoutY="227.0" text="Notas:" />
+            <Label layoutX="54.0" layoutY="236.0" text="Notas:" />
             <TextArea fx:id="txNotas" layoutX="95.0" layoutY="236.0" prefHeight="163.0" prefWidth="187.0" />
             <ScrollBar fx:id="scLista" layoutX="607.0" layoutY="34.0" orientation="VERTICAL" prefHeight="202.0" prefWidth="14.0" />
             <Button fx:id="btNuevo" layoutX="357.0" layoutY="260.0" mnemonicParsing="false" text="Nuevo" />
@@ -62,9 +63,10 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="lbApellidos" layoutX="109.0" layoutY="118.0" prefHeight="18.0" prefWidth="270.0" />
-            <Label fx:id="lbApellidos1" layoutX="47.0" layoutY="119.0" text="Apellidos:" />
+            <Label fx:id="lbApellidos" layoutX="100.0" layoutY="126.0" prefHeight="18.0" prefWidth="270.0" />
+            <Label fx:id="lbApellidos1" layoutX="45.0" layoutY="126.0" text="Apellidos:" />
             <Button fx:id="btNuevo1" layoutX="289.0" layoutY="373.0" mnemonicParsing="false" text="Guardar notas" />
+            <TabPane layoutX="-2.0" prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" />
       </children>
     </AnchorPane>
   </children>

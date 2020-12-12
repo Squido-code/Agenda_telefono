@@ -7,7 +7,7 @@ import javafx.scene.control.TextField;
 /**
  * @author Guillermo Suarez
  */
-public class Nuevo_contacto_controller {
+public class Nuevo_controller {
     public TextField txNombre;
     public TextField txApellidos;
     public TextField txDireccion;

@@ -25,7 +25,7 @@ public class App extends Application {
         //me creo el loader para poder cargar la pantalla
         FXMLLoader loader = new FXMLLoader();
         //loader carga la pantalla
-        loader.setLocation(R.getUI("uiPrincipal.fxml"));
+        loader.setLocation(R.getUI("uiPrincipal2.fxml"));
         //cargo la clase donde esta el codigo vincula a la ventana
         APPController controller = new APPController();
         loader.setController(controller);

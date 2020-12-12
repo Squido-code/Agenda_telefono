@@ -1,7 +1,7 @@
 package com.guillermo.agenda.controllers;
 
-import com.guillermo.agenda.DAO.Conexion_DAO;
-import com.guillermo.agenda.DAO.Persona_DAO;
+import com.guillermo.agenda.DAO.PersonaDAO;
+import com.guillermo.agenda.DAO.TelefonoDAO;
 import com.guillermo.agenda.beans.Persona;
 import com.guillermo.agenda.beans.Telefono;
 import com.guillermo.agenda.util.Herramientas;
@@ -25,27 +25,19 @@ public class APPController {
     public Label lbNombre;
     public Label lbApellidos;
     public Label lbDireccion;
-    public Label lbTelefono_1;
-    public Label lbTelefono_2;
+    public Label lbTelefono1;
+    public Label lbTelefono2;
     public TextArea txNotas;
     public Button btNuevo;
     public Button btEditar;
     public Button btEliminar;
     public Button btBuscar;
-    private final Herramientas tool;
-    private final Persona_DAO persona_dao;
+    private Herramientas tool;
+    private PersonaDAO persona_dao;
+    private TelefonoDAO telefonoDao;
 
     public APPController() {
-        Conexion_DAO baseDatos = new Conexion_DAO();
-        persona_dao = new Persona_DAO();
         tool = new Herramientas();
-        try {
-            persona_dao.conectar();
-        } catch (ClassNotFoundException e) {
-            tool.alertaError("Error critico, programa dañado");
-        } catch (SQLException throwables) {
-            tool.alertaError("Error al conectar con la base de datos");
-        }
     }
 
     /**
@@ -57,6 +49,8 @@ public class APPController {
             lista = tool.Listas_personas_completa();
         } catch (SQLException throwables) {
             tool.alertaError("Error al cargar los datos");
+        } catch (ClassNotFoundException e) {
+            tool.alertaError("Error critico interno");
         }
         lvLista.setItems(FXCollections.observableArrayList(lista));
 
@@ -76,15 +70,15 @@ public class APPController {
         lbDireccion.setText(tool.direccionCompleta(p.getDireccion(),p.getCodigo_postal(),p.getPoblacion()));
         //controlamos erroes al acceder en el Array si este no contiene todos los campos
         if (!telefono.isEmpty()){
-            lbTelefono_1.setText(String.valueOf(telefono.get(0)));
+            lbTelefono1.setText(String.valueOf(telefono.get(0)));
         }else{
-            lbTelefono_1.setText("");
+            lbTelefono1.setText("");
         }
 
         if (telefono.size() == 2){
-            lbTelefono_2.setText(String.valueOf(telefono.get(1)));
+            lbTelefono2.setText(String.valueOf(telefono.get(1)));
         }else{
-            lbTelefono_2.setText("");
+            lbTelefono2.setText("");
         }
         txNotas.setText(p.getNotas());
     }

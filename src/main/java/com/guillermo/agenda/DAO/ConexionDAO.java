@@ -7,8 +7,8 @@ import java.sql.SQLException;
 /**
  * @author Guillermo Suarez
  */
-public class Conexion_DAO {
-    protected static Connection conexion;
+public class ConexionDAO {
+    protected Connection conexion;
 
     public void conectar() throws ClassNotFoundException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver");
