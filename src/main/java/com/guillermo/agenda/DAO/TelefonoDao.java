@@ -13,7 +13,7 @@ import java.util.ArrayList;
 /**
  * @author Guillermo Suarez
  */
-public class TelefonoDAO extends ConexionDAO implements interfazDAO<Telefono> {
+public class TelefonoDao extends ConexionDao implements interfazDAO<Telefono> {
 
 
     public ArrayList<Telefono> listarTelefonos (Persona p) throws SQLException {

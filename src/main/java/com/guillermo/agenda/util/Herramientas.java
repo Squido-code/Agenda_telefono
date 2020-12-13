@@ -1,7 +1,7 @@
 package com.guillermo.agenda.util;
 
-import com.guillermo.agenda.DAO.PersonaDAO;
-import com.guillermo.agenda.DAO.TelefonoDAO;
+import com.guillermo.agenda.DAO.PersonaDao;
+import com.guillermo.agenda.DAO.TelefonoDao;
 import com.guillermo.agenda.beans.Persona;
 import com.guillermo.agenda.beans.Telefono;
 import javafx.scene.control.Alert;
@@ -32,8 +32,8 @@ public class Herramientas {
      * @throws SQLException
      */
     public Persona personaCompleta(Persona p) throws SQLException, ClassNotFoundException {
-        PersonaDAO personaDAO = new PersonaDAO();
-        TelefonoDAO telefonoDAO = new TelefonoDAO();
+        PersonaDao personaDAO = new PersonaDao();
+        TelefonoDao telefonoDAO = new TelefonoDao();
         telefonoDAO.conectar();
         ArrayList<Telefono> listaTelefonos;
         listaTelefonos = telefonoDAO.listarTelefonos(p);
@@ -45,7 +45,7 @@ public class Herramientas {
 
     public ArrayList<Persona> Listas_personas_completa() throws SQLException, ClassNotFoundException {
         Herramientas tool = new Herramientas();
-        PersonaDAO personaDAO = new PersonaDAO();
+        PersonaDao personaDAO = new PersonaDao();
         personaDAO.conectar();
         ArrayList<Persona> listaPersonas;
         //obtenemos todas las personas sin telefonos

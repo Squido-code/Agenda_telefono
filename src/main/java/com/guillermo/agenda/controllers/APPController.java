@@ -1,7 +1,7 @@
 package com.guillermo.agenda.controllers;
 
-import com.guillermo.agenda.DAO.PersonaDAO;
-import com.guillermo.agenda.DAO.TelefonoDAO;
+import com.guillermo.agenda.DAO.PersonaDao;
+import com.guillermo.agenda.DAO.TelefonoDao;
 import com.guillermo.agenda.beans.Persona;
 import com.guillermo.agenda.beans.Telefono;
 import com.guillermo.agenda.util.Herramientas;
@@ -76,8 +76,8 @@ public class APPController extends APPControllerHerramientas{
      */
     @FXML
     public void nuevoContacto() {
-        PersonaDAO pdao = new PersonaDAO();
-        TelefonoDAO telefonoDao = new TelefonoDAO();
+        PersonaDao pdao = new PersonaDao();
+        TelefonoDao telefonoDao = new TelefonoDao();
         Persona p = new Persona();
         Telefono t1 = new Telefono();
         Telefono t2 = new Telefono();
@@ -142,7 +142,7 @@ public class APPController extends APPControllerHerramientas{
      * Método que borra los textfields de la zona de nuevo contacto.
      */
     @FXML
-    private void borrarRegistro() {
+    public void borrarRegistro() {
         txNNombre.setText("");
         txNApellido.setText("");
         txNdireccion.setText("");
@@ -154,8 +154,8 @@ public class APPController extends APPControllerHerramientas{
         txNtf2Numero.setText("");
     }
     @FXML
-    private void editarNotas(){
-        PersonaDAO personaDAO = new PersonaDAO();
+    public void editarNotas(){
+        PersonaDao personaDAO = new PersonaDao();
         Persona p = lvLista.getSelectionModel().getSelectedItem();
         p.setNotas(txNotas.getText());
         try {
@@ -170,11 +170,12 @@ public class APPController extends APPControllerHerramientas{
         }
     }
     @FXML
-    private void editarContacto(){
+    public void editarContacto(){
         modoEdicionContacto(true);
         edicionTxField();
-
-
-
+    }
+    @FXML
+    public void cancelarEdicion(){
+        modoEdicionContacto(false);
     }
 }

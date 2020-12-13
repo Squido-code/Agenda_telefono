@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="568.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+  <children>
+    <MenuBar VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="File">
+          <items>
+            <MenuItem mnemonicParsing="false" text="New" />
+            <MenuItem mnemonicParsing="false" text="Open…" />
+            <Menu mnemonicParsing="false" text="Open Recent" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Close" />
+            <MenuItem mnemonicParsing="false" text="Save" />
+            <MenuItem mnemonicParsing="false" text="Save As…" />
+            <MenuItem mnemonicParsing="false" text="Revert" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Quit" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+          <items>
+            <MenuItem mnemonicParsing="false" text="Undo" />
+            <MenuItem mnemonicParsing="false" text="Redo" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Cut" />
+            <MenuItem mnemonicParsing="false" text="Copy" />
+            <MenuItem mnemonicParsing="false" text="Paste" />
+            <MenuItem mnemonicParsing="false" text="Delete" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Select All" />
+            <MenuItem mnemonicParsing="false" text="Unselect All" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+      <TabPane prefHeight="554.0" prefWidth="640.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Inicio">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="530.0" prefWidth="640.0">
+                     <children>
+                        <Label fx:id="lbNombreDescripcion" layoutX="55.0" layoutY="58.0" prefHeight="18.0" prefWidth="52.0" text="Nombre:" />
+                        <Label fx:id="lbApellidosDescripcion" layoutX="55.0" layoutY="96.0" text="Apellidos:" />
+                        <Label fx:id="lbDireccionDescripcion" layoutX="55.0" layoutY="196.0" text="Dirección:" />
+                        <Label fx:id="lbTelefonoDescripcion" layoutX="56.0" layoutY="135.0" text="Teléfono:" />
+                        <Label fx:id="lbNombre" layoutX="120.0" layoutY="59.0" prefHeight="18.0" prefWidth="106.0" text="Label" />
+                        <Label fx:id="lbApellidos" layoutX="120.0" layoutY="96.0" text="Label" />
+                        <Label fx:id="lbDireccion" layoutX="120.0" layoutY="196.0" text="Label" />
+                        <Label fx:id="lbTelefono1" layoutX="120.0" layoutY="135.0" text="Label" />
+                        <Label fx:id="lbTelefono2" layoutX="120.0" layoutY="167.0" text="Label" />
+                        <Label layoutX="56.0" layoutY="287.0" text="Notas:" />
+                        <TextArea fx:id="txNotas" layoutX="119.0" layoutY="296.0" prefHeight="200.0" prefWidth="200.0" />
+                        <ScrollPane layoutX="414.0" layoutY="67.0" prefHeight="238.0" prefWidth="212.0">
+                           <content>
+                              <ListView fx:id="lvLista" onMouseClicked="#seleccionarPersona" prefHeight="236.0" prefWidth="209.0" />
+                           </content>
+                        </ScrollPane>
+                        <Button fx:id="btEditarNotas" layoutX="344.0" layoutY="454.0" mnemonicParsing="false" onAction="#editarNotas" text="Editar notas" />
+                        <Button fx:id="btEditarContacto" disable="true" layoutX="414.0" layoutY="314.0" mnemonicParsing="false" onAction="#editarContacto" text="Editar contacto" />
+                        <Pane fx:id="pEditar" layoutX="14.0" layoutY="5.0" prefHeight="273.0" prefWidth="388.0" visible="false">
+                           <children>
+                              <TextField fx:id="txDireEdit" layoutX="59.0" layoutY="137.0" prefHeight="26.0" prefWidth="152.0" />
+                              <TextField fx:id="txApellidosEdit" layoutX="60.0" layoutY="104.0" />
+                              <TextField fx:id="txPoblaEdit" layoutX="58.0" layoutY="172.0" prefHeight="26.0" prefWidth="205.0" />
+                              <TextField fx:id="txNombreEdit" layoutX="60.0" layoutY="70.0" />
+                              <TextField fx:id="txCpEdit" layoutX="310.0" layoutY="172.0" prefHeight="26.0" prefWidth="66.0" />
+                              <Label fx:id="lbCP" layoutX="274.0" layoutY="177.0" text="C.P:" />
+                              <Label fx:id="lbPoblacion" layoutX="2.0" layoutY="177.0" text="Población:" />
+                              <Label fx:id="lbnumero1edit" layoutX="256.0" layoutY="207.0" text="Nº:" />
+                              <Label fx:id="lbnumero2edit" layoutX="255.0" layoutY="239.0" prefHeight="17.0" prefWidth="19.0" text="Nº:" />
+                              <Label fx:id="lbt2nombreedit" layoutX="67.0" layoutY="207.0" text="Nombre:" />
+                              <TextField fx:id="txt2NonmbreEdit" layoutX="118.0" layoutY="234.0" prefHeight="26.0" prefWidth="123.0" />
+                              <TextField fx:id="txt1NumeroEdit" layoutX="274.0" layoutY="202.0" prefHeight="26.0" prefWidth="98.0" />
+                              <TextField fx:id="txt2NumeroEdit" layoutX="274.0" layoutY="234.0" prefHeight="26.0" prefWidth="98.0" />
+                              <Label layoutY="74.0" text="Nombre:" />
+                              <Label layoutX="2.0" layoutY="108.0" text="Apellidos:" />
+                              <Label layoutX="2.0" layoutY="141.0" text="Dirección:" />
+                              <Label layoutX="9.0" layoutY="207.0" text="Teléfono:" />
+                              <TextField fx:id="txt1NonmbreEdit" layoutX="118.0" layoutY="202.0" prefHeight="26.0" prefWidth="123.0" />
+                              <Label fx:id="lbt2nombreedit1" layoutX="67.0" layoutY="239.0" text="Nombre:" />
+                              <Label layoutX="134.0" layoutY="14.0" text="Editar contacto" underline="true">
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </Pane>
+                        <Button fx:id="btAceptarEdit" layoutX="417.0" layoutY="352.0" mnemonicParsing="false" text="Aceptar" visible="false" />
+                        <Button fx:id="btCancelarEdit" layoutX="510.0" layoutY="352.0" mnemonicParsing="false" onAction="#cancelarEdicion" text="Cancelar" visible="false" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <Tab text="Registro">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <Label layoutX="54.0" layoutY="75.0" text="Nombre:" />
+                        <Label layoutX="52.0" layoutY="102.0" text="Apellidos:" />
+                        <Label layoutX="52.0" layoutY="134.0" text="Dirección:" />
+                        <Label layoutX="46.0" layoutY="165.0" text="Codigo Postal:" />
+                        <Label layoutX="56.0" layoutY="194.0" text="Población:" />
+                        <Label layoutX="54.0" layoutY="230.0" text="Teléfono 1:" />
+                        <Label layoutX="99.0" layoutY="257.0" text="Nombre:" />
+                        <Label layoutX="99.0" layoutY="286.0" text="Número:" />
+                        <Label layoutX="53.0" layoutY="320.0" text="Teléfono 2:" />
+                        <Label layoutX="98.0" layoutY="347.0" text="Nombre:" />
+                        <Label layoutX="98.0" layoutY="376.0" text="Número:" />
+                        <Label layoutX="64.0" layoutY="30.0" text="Nuevo Contacto" underline="true" />
+                        <TextField fx:id="txNNombre" layoutX="122.0" layoutY="71.0" />
+                        <TextField fx:id="txNApellido" layoutX="122.0" layoutY="98.0" />
+                        <TextField fx:id="txNdireccion" layoutX="122.0" layoutY="130.0" />
+                        <TextField fx:id="txNcp" layoutX="131.0" layoutY="161.0" />
+                        <TextField fx:id="txNpoblacion" layoutX="122.0" layoutY="190.0" />
+                        <TextField fx:id="txNtf1Nombre" layoutX="159.0" layoutY="253.0" />
+                        <TextField fx:id="txNtf1Numero" layoutX="159.0" layoutY="282.0" />
+                        <TextField fx:id="txNtf2Nombre" layoutX="159.0" layoutY="343.0" />
+                        <TextField fx:id="txNtf2Numero" layoutX="159.0" layoutY="372.0" />
+                        <Button fx:id="btNuevoContacto" layoutX="374.0" layoutY="356.0" mnemonicParsing="false" onAction="#nuevoContacto" text="Aceptar" />
+                        <Button fx:id="BorrarRegistro" layoutX="469.0" layoutY="356.0" mnemonicParsing="false" onAction="#borrarRegistro" text="Borrar registro" />
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Opciones">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+  </children>
+</VBox>

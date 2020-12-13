@@ -2,6 +2,7 @@ package com.guillermo.agenda.controllers;
 
 import com.guillermo.agenda.beans.Persona;
 import javafx.scene.control.*;
+import javafx.scene.layout.Pane;
 
 /**
  * @author Guillermo Suarez
@@ -13,17 +14,18 @@ public class ComponentesController {
     public Label lbDireccion;
     public Label lbTelefono1;
     public Label lbTelefono2;
-    public Label lbCP;
-    public Label lbPoblacion;
-    public Label lbnumero1edit;
-    public Label lbnumero2edit;
-    public Label lbt1nombreedit;
-    public Label lbt2nombreedit;
+    public Label lbNombreDescripcion;
+    public Label lbApellidosDescripcion;
+    public Label lbDireccionDescripcion;
+    public Label lbTelefonoDescripcion;
+
 
     public TextArea txNotas;
     public Button BorrarRegistro;
     public Button btEditarNotas;
     public Button btEditarContacto;
+    public Button btAceptarEdit;
+    public Button btCancelarEdit;
     public TextField txNNombre;
     public TextField txNApellido;
     public TextField txNdireccion;
@@ -43,4 +45,6 @@ public class ComponentesController {
     public TextField txt1NumeroEdit;
     public TextField txt2NonmbreEdit;
     public TextField txt2NumeroEdit;
+
+    public Pane pEditar;
 }

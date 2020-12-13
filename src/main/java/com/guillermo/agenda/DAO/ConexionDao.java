@@ -7,7 +7,7 @@ import java.sql.SQLException;
 /**
  * @author Guillermo Suarez
  */
-public class ConexionDAO {
+public class ConexionDao {
     protected Connection conexion;
 
     public void conectar() throws ClassNotFoundException, SQLException {

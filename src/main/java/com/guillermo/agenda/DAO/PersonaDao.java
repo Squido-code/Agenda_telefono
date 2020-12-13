@@ -13,7 +13,7 @@ import java.util.HashMap;
 /**
  * @author Guillermo Suarez
  */
-public class PersonaDAO extends ConexionDAO implements interfazDAO<Persona> {
+public class PersonaDao extends ConexionDao implements interfazDAO<Persona> {
 
 
     @Override

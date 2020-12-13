@@ -2,8 +2,6 @@ package com.guillermo.agenda.controllers;
 
 import com.guillermo.agenda.beans.Persona;
 import com.guillermo.agenda.beans.Telefono;
-import com.guillermo.agenda.controllers.APPController;
-import com.guillermo.agenda.controllers.ComponentesController;
 
 import java.util.ArrayList;
 
@@ -12,33 +10,27 @@ import java.util.ArrayList;
  */
 public class APPControllerHerramientas extends ComponentesController {
 
-    public void modoEdicionContacto (Boolean activar){
+    protected void modoEdicionContacto (Boolean activar){
         //ocultamos todos los labels
         lbNombre.setVisible(!activar);
         lbApellidos.setVisible(!activar);
         lbDireccion.setVisible(!activar);
         lbTelefono1.setVisible(!activar);
         lbTelefono2.setVisible(!activar);
+        lbNombreDescripcion.setVisible(!activar);
+        lbApellidosDescripcion.setVisible(!activar);
+        lbDireccionDescripcion.setVisible(!activar);
+        lbTelefonoDescripcion.setVisible(!activar);
+        //desactivamos los botones y listas
         txNotas.setDisable(activar);
-        //hacemos visibles los textfields
-        txNombreEdit.setVisible(activar);
-        txApellidosEdit.setVisible(activar);
-        txDireEdit.setVisible(activar);
-        txCpEdit.setVisible(activar);
-        txPoblaEdit.setVisible(activar);
-        txt1NonmbreEdit.setVisible(activar);
-        txt1NumeroEdit.setVisible(activar);
-        txt2NonmbreEdit.setVisible(activar);
-        txt2NumeroEdit.setVisible(activar);
-        //hacemos visible los lables complementarios
-        lbCP.setVisible(activar);
-        lbPoblacion.setVisible(activar);
-        lbnumero1edit.setVisible(activar);
-        lbnumero2edit.setVisible(activar);
-        lbt1nombreedit.setVisible(activar);
-        lbt2nombreedit.setVisible(activar);
+        lvLista.setDisable(activar);
+        btEditarNotas.setDisable(activar);
+        //mostramos la pantalla de edicion y sus botones
+        pEditar.setVisible(activar);
+        btAceptarEdit.setVisible(activar);
+        btCancelarEdit.setVisible(activar);
     }
-    public void edicionTxField(){
+    protected void edicionTxField(){
         Persona pAntigua = lvLista.getSelectionModel().getSelectedItem();
         txNombreEdit.setText(pAntigua.getNombre());
         txApellidosEdit.setText(pAntigua.getApellidos());
