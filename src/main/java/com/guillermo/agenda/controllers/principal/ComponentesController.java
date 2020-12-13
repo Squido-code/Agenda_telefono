@@ -1,4 +1,4 @@
-package com.guillermo.agenda.controllers;
+package com.guillermo.agenda.controllers.principal;
 
 import com.guillermo.agenda.beans.Persona;
 import javafx.scene.control.*;

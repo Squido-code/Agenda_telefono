@@ -12,14 +12,14 @@
    <children>
       <Label layoutX="78.0" layoutY="66.0" text="Usuario:" />
       <Label layoutX="68.0" layoutY="119.0" text="Contraseña:" />
-      <TextField layoutX="167.0" layoutY="62.0" />
+      <TextField fx:id="txUser" layoutX="167.0" layoutY="62.0" />
       <Label layoutX="167.0" layoutY="23.0" text="Login" underline="true">
          <font>
             <Font size="18.0" />
          </font>
       </Label>
-      <PasswordField layoutX="167.0" layoutY="115.0" />
-      <Button layoutX="102.0" layoutY="179.0" mnemonicParsing="false" text="Aceptar" />
-      <Button layoutX="222.0" layoutY="179.0" mnemonicParsing="false" text="Salir" />
+      <PasswordField fx:id="txPass" layoutX="167.0" layoutY="115.0" />
+      <Button fx:id="btAceptar" layoutX="102.0" layoutY="179.0" mnemonicParsing="false" onAction="#aceptarLogin" text="Aceptar" />
+      <Button fx:id="btSalir" layoutX="222.0" layoutY="179.0" mnemonicParsing="false" onAction="#salirApp" text="Salir" />
    </children>
 </Pane>

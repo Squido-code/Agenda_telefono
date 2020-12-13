@@ -1,4 +1,4 @@
-package com.guillermo.agenda.controllers;
+package com.guillermo.agenda.controllers.principal;
 
 import com.guillermo.agenda.DAO.PersonaDao;
 import com.guillermo.agenda.DAO.TelefonoDao;
@@ -19,7 +19,7 @@ import java.util.Optional;
 /**
  * @author Guillermo Suarez
  */
-public class APPController extends APPControllerHerramientas{
+public class APPController extends APPControllerHerramientas {
 
     private Herramientas tool;
 
@@ -165,40 +165,40 @@ public class APPController extends APPControllerHerramientas{
             int id;
             String nombre,numero;
             //telefono 1
-            Telefono telefono = new Telefono();
-
+            Telefono telefono1 = new Telefono();
+            Telefono telefono2 = new Telefono();
            id = persona.getTelefono().get(0).getIdTelefono();
             //comprobamos si el telefono existia antes y lo actualizamos, o creamos una entrada nueva
            if(id==-1){
-               telefono.setIdPersona(persona.getIdpersona());
-               telefono.setNombre(txt1NonmbreEdit.getText());
-               telefono.setNumero(txt1NumeroEdit.getText());
-               telefonoDao.insertar(telefono);
+               telefono1.setIdPersona(persona.getIdpersona());
+               telefono1.setNombre(txt1NonmbreEdit.getText());
+               telefono1.setNumero(txt1NumeroEdit.getText());
+               telefonoDao.insertar(telefono1);
            }else{
-               telefono.setIdTelefono(id);
+               telefono1.setIdTelefono(id);
                nombre =persona.getTelefono().get(0).getNombre();
                numero = persona.getTelefono().get(0).getNumero();
-               telefono.setNombre(nombre);
-               telefono.setNumero(numero);
-               telefonoDao.modificar(telefono);
+               telefono1.setNombre(nombre);
+               telefono1.setNumero(numero);
+               telefonoDao.modificar(telefono1);
            }
 
             //telefono 2
             if(persona.getTelefono().size()==2){
                 id= persona.getTelefono().get(1).getIdTelefono();
                 //comprobamos si el telefono existia antes y lo actualizamos, o creamos una entrada nueva
-                if(id!=-1 && persona.getIdpersona()!=-1){
-                    telefono.setIdPersona(persona.getIdpersona());
-                    telefono.setNombre(txt2NonmbreEdit.getText());
-                    telefono.setNumero(txt2NumeroEdit.getText());
-                    telefonoDao.insertar(telefono);
+                if(id==-1){
+                    telefono2.setIdPersona(persona.getIdpersona());
+                    telefono2.setNombre(txt2NonmbreEdit.getText());
+                    telefono2.setNumero(txt2NumeroEdit.getText());
+                    telefonoDao.insertar(telefono2);
                 }else{
                     nombre = persona.getTelefono().get(1).getNombre();
                     numero = persona.getTelefono().get(1).getNumero();
-                    telefono.setIdTelefono(id);
-                    telefono.setNombre(nombre);
-                    telefono.setNumero(numero);
-                    telefonoDao.modificar(telefono);
+                    telefono2.setIdTelefono(id);
+                    telefono2.setNombre(nombre);
+                    telefono2.setNumero(numero);
+                    telefonoDao.modificar(telefono2);
                 }
             }
             telefonoDao.desconectar();
