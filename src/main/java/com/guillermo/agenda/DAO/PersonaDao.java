@@ -72,13 +72,16 @@ public class PersonaDao extends ConexionDao implements interfazDAO<Persona> {
         sentencia.setString(4,persona.getCodigo_postal());
         sentencia.setString(5,persona.getPoblacion());
         sentencia.setString(6,persona.getNotas());
-        sentencia.setInt(7,persona.getId_persona());
+        sentencia.setInt(7,persona.getIdpersona());
         sentencia.executeUpdate();
     }
 
     @Override
-    public void eliminar(Persona p) throws SQLException {
-
+    public void eliminar(Persona persona) throws SQLException {
+        String sql = "DELETE FROM personas WHERE id_persona = ?";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setInt(1, persona.getIdpersona());
+        sentencia.executeUpdate();
     }
 
 
@@ -101,7 +104,26 @@ public class PersonaDao extends ConexionDao implements interfazDAO<Persona> {
         String sql = "UPDATE personas set notas = ? where id_persona=?";
         PreparedStatement sentencia = conexion.prepareStatement(sql);
         sentencia.setString(1, p.getNotas());
-        sentencia.setInt(2,p.getId_persona());
+        sentencia.setInt(2,p.getIdpersona());
         sentencia.executeUpdate();
+    }
+    public Persona buscarNombre(Persona persona) throws SQLException {
+        String sql = "SELECT * FROM personas where nombre= ? AND apellidos = ?";
+        ResultSet rs = null;
+        Persona p = new Persona();
+        PreparedStatement st = conexion.prepareStatement(sql);
+        st.setString(1,persona.getNombre());
+        st.setString(2,persona.getApellidos());
+        rs = st.executeQuery();
+        while (rs.next()) {
+            p.setId_persona(rs.getInt("id_persona"));
+            p.setNombre(rs.getString("nombre"));
+            p.setApellidos(rs.getString("apellidos"));
+            p.setDireccion(rs.getString("direccion"));
+            p.setCodigo_postal(rs.getString("codigo_postal"));
+            p.setPoblacion(rs.getString("poblacion"));
+            p.setNotas(rs.getString("notas"));
+        }
+        return p;
     }
 }

@@ -6,7 +6,7 @@ import java.util.ArrayList;
  * @author squid
  */
 public class Persona {
-    private int id_persona;
+    private int idPersona = -1;
     private String nombre;
     private String apellidos;
     private ArrayList<Telefono> telefono;
@@ -15,8 +15,22 @@ public class Persona {
     private String poblacion;
     private String notas;
 
-    public int getId_persona() {
-        return id_persona;
+    public Persona() {
+    }
+
+    public Persona(String nombre, String apellidos) {
+        this.nombre= nombre;
+        this.apellidos= apellidos;
+    }
+    public Boolean idIsEmpty(){
+        if(idPersona ==-1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public int getIdpersona() {
+        return idPersona;
     }
 
     public String getNombre() {
@@ -36,7 +50,7 @@ public class Persona {
     }
 
     public void setId_persona(int id_persona) {
-        this.id_persona = id_persona;
+        this.idPersona = id_persona;
     }
 
     public ArrayList<Telefono> getTelefono() {

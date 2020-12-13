@@ -18,14 +18,20 @@ public class ComponentesController {
     public Label lbApellidosDescripcion;
     public Label lbDireccionDescripcion;
     public Label lbTelefonoDescripcion;
+    public Label lbTituloAgenda;
+    public Label lbBusqueda;
+    public Label lbNombreBusqueda;
+    public Label lbApellidosBusqueda;
 
 
     public TextArea txNotas;
-    public Button BorrarRegistro;
     public Button btEditarNotas;
     public Button btEditarContacto;
     public Button btAceptarEdit;
     public Button btCancelarEdit;
+    public Button btEliminar;
+    public Button btBuscar;
+
     public TextField txNNombre;
     public TextField txNApellido;
     public TextField txNdireccion;
@@ -46,5 +52,7 @@ public class ComponentesController {
     public TextField txt2NonmbreEdit;
     public TextField txt2NumeroEdit;
 
+    public TextField txBuscarNombre;
+    public TextField txBuscarApellidos;
     public Pane pEditar;
 }

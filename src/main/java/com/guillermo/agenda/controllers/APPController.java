@@ -8,9 +8,13 @@ import com.guillermo.agenda.util.Herramientas;
 import javafx.collections.FXCollections;
 import javafx.event.Event;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonBar;
+import javafx.scene.control.ButtonType;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Optional;
 
 /**
  * @author Guillermo Suarez
@@ -51,24 +55,7 @@ public class APPController extends APPControllerHerramientas{
     @FXML
     public void seleccionarPersona(Event event) {
         Persona p = lvLista.getSelectionModel().getSelectedItem();
-        ArrayList<Telefono> telefono = p.getTelefono();
-        lbNombre.setText(p.getNombre());
-        lbApellidos.setText(p.getApellidos());
-        lbDireccion.setText(tool.direccionCompleta(p.getDireccion(), p.getCodigo_postal(), p.getPoblacion()));
-        //controlamos erroes al acceder en el Array si este no contiene todos los campos
-        if (!telefono.isEmpty()) {
-            lbTelefono1.setText(String.valueOf(telefono.get(0)));
-        } else {
-            lbTelefono1.setText("");
-        }
-
-        if (telefono.size() == 2) {
-            lbTelefono2.setText(String.valueOf(telefono.get(1)));
-        } else {
-            lbTelefono2.setText("");
-        }
-        txNotas.setText(p.getNotas());
-        btEditarContacto.setDisable(false);
+        pintarInicioPersona(p);
     }
 
     /**
@@ -105,27 +92,17 @@ public class APPController extends APPControllerHerramientas{
             pdao.insertar(p);
             int idPersona=pdao.id(p);
             pdao.desconectar();
-            /*
-            Controlamos que haya telefonos antes de hacer el insert
-             */
-            if (t1.getNombre().isEmpty() || t1.getNumero().isEmpty()) {
-                tool.alertaError("El nombre en telefono 1 es obligatorio");
-                return;
-            } else {
+
                 telefonoDao.conectar();
                 t1.setIdPersona(idPersona);
                 telefonoDao.insertar(t1);
                 telefonoDao.desconectar();
-            }
-            if (t2.getNombre().isEmpty() || t2.getNumero().isEmpty()) {
-                tool.alertaError("El nombre en telefono 1 es obligatorio");
-                return;
-            } else {
+
             telefonoDao.conectar();
             t2.setIdPersona(idPersona);
             telefonoDao.insertar(t2);
             telefonoDao.desconectar();
-            }
+
 
 
         } catch (SQLException throwables) {
@@ -188,26 +165,41 @@ public class APPController extends APPControllerHerramientas{
             int id;
             String nombre,numero;
             //telefono 1
-            Telefono telefono1 = new Telefono();
-            if(!persona.getTelefono().isEmpty()){
-                id = persona.getTelefono().get(0).getIdTelefono();
-                nombre =persona.getTelefono().get(0).getNombre();
-                numero = persona.getTelefono().get(0).getNumero();
-                telefono1.setIdTelefono(id);
-                telefono1.setNombre(nombre);
-                telefono1.setNumero(numero);
-                telefonoDao.modificar(telefono1);
-            }
+            Telefono telefono = new Telefono();
+
+           id = persona.getTelefono().get(0).getIdTelefono();
+            //comprobamos si el telefono existia antes y lo actualizamos, o creamos una entrada nueva
+           if(id==-1){
+               telefono.setIdPersona(persona.getIdpersona());
+               telefono.setNombre(txt1NonmbreEdit.getText());
+               telefono.setNumero(txt1NumeroEdit.getText());
+               telefonoDao.insertar(telefono);
+           }else{
+               telefono.setIdTelefono(id);
+               nombre =persona.getTelefono().get(0).getNombre();
+               numero = persona.getTelefono().get(0).getNumero();
+               telefono.setNombre(nombre);
+               telefono.setNumero(numero);
+               telefonoDao.modificar(telefono);
+           }
+
             //telefono 2
             if(persona.getTelefono().size()==2){
-                Telefono telefono2 = new Telefono();
                 id= persona.getTelefono().get(1).getIdTelefono();
-                nombre =persona.getTelefono().get(1).getNombre();
-                numero = persona.getTelefono().get(1).getNumero();
-                telefono2.setIdTelefono(id);
-                telefono2.setNombre(nombre);
-                telefono2.setNumero(numero);
-                telefonoDao.modificar(telefono2);
+                //comprobamos si el telefono existia antes y lo actualizamos, o creamos una entrada nueva
+                if(id!=-1 && persona.getIdpersona()!=-1){
+                    telefono.setIdPersona(persona.getIdpersona());
+                    telefono.setNombre(txt2NonmbreEdit.getText());
+                    telefono.setNumero(txt2NumeroEdit.getText());
+                    telefonoDao.insertar(telefono);
+                }else{
+                    nombre = persona.getTelefono().get(1).getNombre();
+                    numero = persona.getTelefono().get(1).getNumero();
+                    telefono.setIdTelefono(id);
+                    telefono.setNombre(nombre);
+                    telefono.setNumero(numero);
+                    telefonoDao.modificar(telefono);
+                }
             }
             telefonoDao.desconectar();
             cargarDatos();
@@ -226,4 +218,60 @@ public class APPController extends APPControllerHerramientas{
     public void cancelarEdicion(){
         modoEdicionContacto(false);
     }
+    @FXML
+    public void eliminarContacto(){
+        PersonaDao personaDao = new PersonaDao();
+        Persona persona = lvLista.getSelectionModel().getSelectedItem();
+        Alert confirmacion = new Alert(Alert.AlertType.CONFIRMATION);
+        confirmacion.setTitle("Eliminar contacto");
+        confirmacion.setContentText("¿Estás seguro?");
+        Optional<ButtonType> respuesta = confirmacion.showAndWait();
+        if (respuesta.get().getButtonData() == ButtonBar.ButtonData.CANCEL_CLOSE) {
+            return;
+        }
+        try {
+            personaDao.conectar();
+            personaDao.eliminar(persona);
+            personaDao.desconectar();
+            cargarDatos();
+            limpiarPrincipal();
+            btEditarContacto.setDisable(true);//al seleccionar un contacto para eliminar se habilitaba
+        } catch (SQLException throwables) {
+            tool.alertaError("Error al conectar con la base de datos");
+        } catch (ClassNotFoundException e) {
+            tool.alertaError("Error crítico");
+        }
+    }
+    @FXML
+    public void buscarContacto(){
+        Boolean nombreIsEmpty = txBuscarNombre.getText().isEmpty();
+        Boolean apellidosIsEmpty = txBuscarApellidos.getText().isEmpty();
+        if(nombreIsEmpty || apellidosIsEmpty){
+            tool.alertaError("El nombre y los apellidos es obligatorio");
+            return;
+        }
+        String nombre = txBuscarNombre.getText();
+        String apellidos = txBuscarApellidos.getText();
+        PersonaDao personaDao = new PersonaDao();
+        Persona persona = new Persona(nombre,apellidos);
+        try {
+            personaDao.conectar();
+            Persona personaBuscada = new Persona();
+            personaBuscada = personaDao.buscarNombre(persona);
+            if(personaBuscada.idIsEmpty()){
+                tool.alertaInfo("La persona buscada no existe");
+                return;
+            }
+            Persona personaCompleta = tool.personaCompleta(personaBuscada);
+            tool.alertaInfo("Busqueda con éxito");
+            pintarInicioPersona(personaCompleta);
+        } catch (ClassNotFoundException e) {
+            tool.alertaError("Error al conectar con la base de datos");
+        } catch (SQLException throwables) {
+            tool.alertaError("Error crítico");
+        }
+
+
+    }
+
 }

@@ -5,7 +5,7 @@ package com.guillermo.agenda.beans;
  */
 public class Telefono {
     private  int idTelefono=-1;
-    private int idPersona;
+    private int idPersona =-1;
     private String nombre;
     private String numero;
 
@@ -17,8 +17,21 @@ public class Telefono {
         this.nombre = nombre;
         this.numero = numero;
     }
+
+    public Telefono(String nombre, String numero) {
+        this.nombre=nombre;
+        this.numero=numero;
+    }
+
     public Boolean idIsEmpty(){
         if(idTelefono==-1){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public Boolean idPersonaIsEmpty(){
+        if(idPersona==-1){
             return true;
         }else{
             return false;
@@ -56,6 +69,6 @@ public class Telefono {
         this.numero = numero;
     }
     public String toString(){
-        return getNombre()+": "+getNumero();
+        return getNombre()+" "+getNumero();
     }
 }

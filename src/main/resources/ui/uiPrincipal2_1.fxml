@@ -68,11 +68,11 @@
                         <Label fx:id="lbApellidosDescripcion" layoutX="55.0" layoutY="96.0" text="Apellidos:" />
                         <Label fx:id="lbDireccionDescripcion" layoutX="55.0" layoutY="196.0" text="Dirección:" />
                         <Label fx:id="lbTelefonoDescripcion" layoutX="56.0" layoutY="135.0" text="Teléfono:" />
-                        <Label fx:id="lbNombre" layoutX="120.0" layoutY="59.0" prefHeight="18.0" prefWidth="106.0" text="Label" />
-                        <Label fx:id="lbApellidos" layoutX="120.0" layoutY="96.0" text="Label" />
-                        <Label fx:id="lbDireccion" layoutX="120.0" layoutY="196.0" text="Label" />
-                        <Label fx:id="lbTelefono1" layoutX="120.0" layoutY="135.0" text="Label" />
-                        <Label fx:id="lbTelefono2" layoutX="120.0" layoutY="167.0" text="Label" />
+                        <Label fx:id="lbNombre" layoutX="120.0" layoutY="59.0" prefHeight="18.0" prefWidth="106.0" />
+                        <Label fx:id="lbApellidos" layoutX="120.0" layoutY="96.0" />
+                        <Label fx:id="lbDireccion" layoutX="120.0" layoutY="196.0" />
+                        <Label fx:id="lbTelefono1" layoutX="120.0" layoutY="135.0" />
+                        <Label fx:id="lbTelefono2" layoutX="120.0" layoutY="167.0" />
                         <Label layoutX="56.0" layoutY="287.0" text="Notas:" />
                         <TextArea fx:id="txNotas" layoutX="119.0" layoutY="296.0" prefHeight="200.0" prefWidth="200.0" />
                         <ScrollPane layoutX="414.0" layoutY="67.0" prefHeight="238.0" prefWidth="212.0">
@@ -112,6 +112,23 @@
                         </Pane>
                         <Button fx:id="btAceptarEdit" layoutX="417.0" layoutY="352.0" mnemonicParsing="false" onAction="#editarContacto" text="Aceptar" visible="false" />
                         <Button fx:id="btCancelarEdit" layoutX="510.0" layoutY="352.0" mnemonicParsing="false" onAction="#cancelarEdicion" text="Cancelar" visible="false" />
+                        <Label fx:id="lbTituloAgenda" layoutX="134.0" layoutY="21.0" text="Agenda" underline="true">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="474.0" layoutY="38.0" text="Lista contactos" underline="true">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                        <Label fx:id="lbNombreBusqueda" layoutX="393.0" layoutY="378.0" text="Nombre:" />
+                        <TextField fx:id="txBuscarNombre" layoutX="454.0" layoutY="374.0" />
+                        <Button fx:id="btBuscar" layoutX="494.0" layoutY="441.0" mnemonicParsing="false" onAction="#buscarContacto" text="Buscar" />
+                        <Button fx:id="btEliminar" layoutX="528.0" layoutY="314.0" mnemonicParsing="false" onAction="#eliminarContacto" text="Eliminar" />
+                        <TextField fx:id="txBuscarApellidos" layoutX="453.0" layoutY="408.0" />
+                        <Label fx:id="lbApellidosBusqueda" layoutX="391.0" layoutY="412.0" text="Apellidos:" />
+                        <Label fx:id="lbBusqueda" layoutX="492.0" layoutY="352.0" text="Busqueda" underline="true" />
                      </children>
                   </AnchorPane>
             </content>

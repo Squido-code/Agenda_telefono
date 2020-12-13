@@ -78,6 +78,10 @@ public class Herramientas {
         return todo;
     }
 
+    /**
+     * Método para mostar alertas
+     * @param string
+     */
     public void alertaInfo(String string) {
         Alert alerta = new Alert(Alert.AlertType.INFORMATION);
         alerta.setContentText(string);

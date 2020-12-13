@@ -21,7 +21,7 @@ public class TelefonoDao extends ConexionDao implements interfazDAO<Telefono> {
         ResultSet rs = null;
         ArrayList<Telefono> listaTelefonos = new ArrayList<>();
         PreparedStatement st = conexion.prepareStatement(sql);
-        st.setInt(1, p.getId_persona());
+        st.setInt(1, p.getIdpersona());
         rs = st.executeQuery();
 
         while (rs.next()) {
