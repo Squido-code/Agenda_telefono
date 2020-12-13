@@ -26,7 +26,7 @@ public class TelefonoDao extends ConexionDao implements interfazDAO<Telefono> {
 
         while (rs.next()) {
             Telefono t = new Telefono();
-            t.setIdPersona(rs.getInt("id_telefono"));
+            t.setIdTelefono(rs.getInt("id_telefono"));
             t.setNombre(rs.getString("nombre"));
             t.setNumero(rs.getString("numero"));
             listaTelefonos.add(t);
@@ -51,8 +51,13 @@ public class TelefonoDao extends ConexionDao implements interfazDAO<Telefono> {
     }
 
     @Override
-    public void modificar(Telefono object, Telefono object2) throws SQLException {
-
+    public void modificar(Telefono telefono) throws SQLException {
+        String sql = "UPDATE telefonos set nombre = ?,numero = ? where id_telefono=?";
+        PreparedStatement sentencia = conexion.prepareStatement(sql);
+        sentencia.setString(1, telefono.getNombre());
+        sentencia.setString(2,telefono.getNumero());
+        sentencia.setInt(3,telefono.getIdTelefono());
+        sentencia.executeUpdate();
     }
 
     @Override

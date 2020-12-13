@@ -63,16 +63,16 @@ public class PersonaDao extends ConexionDao implements interfazDAO<Persona> {
     }
 
     @Override
-    public void modificar(Persona pAntiguo, Persona pNueva) throws SQLException {
-        String sql = "UPDATE personas SET nombre = ?, apellidos = ?, direccion = ?,poblacion = ?,codigo postal = ?, notas = ? WHERE id_persona = ?";
+    public void modificar(Persona persona) throws SQLException {
+        String sql = "UPDATE personas SET nombre = ?, apellidos = ?, direccion = ?,codigo_postal = ?,poblacion = ?, notas = ? WHERE id_persona = ?";
         PreparedStatement sentencia = conexion.prepareStatement(sql);
-        sentencia.setString(1, pNueva.getNombre());
-        sentencia.setString(2, pNueva.getApellidos());
-        sentencia.setString(3,pNueva.getDireccion());
-        sentencia.setString(4,pNueva.getCodigo_postal());
-        sentencia.setString(5,pNueva.getPoblacion());
-        sentencia.setString(6,pNueva.getNotas());
-        sentencia.setInt(7,pAntiguo.getId_persona());
+        sentencia.setString(1, persona.getNombre());
+        sentencia.setString(2, persona.getApellidos());
+        sentencia.setString(3,persona.getDireccion());
+        sentencia.setString(4,persona.getCodigo_postal());
+        sentencia.setString(5,persona.getPoblacion());
+        sentencia.setString(6,persona.getNotas());
+        sentencia.setInt(7,persona.getId_persona());
         sentencia.executeUpdate();
     }
 

@@ -170,9 +170,57 @@ public class APPController extends APPControllerHerramientas{
         }
     }
     @FXML
-    public void editarContacto(){
+    public void entrarModoEdicion(){
         modoEdicionContacto(true);
         edicionTxField();
+    }
+    @FXML
+    public void editarContacto(){
+        PersonaDao personaDao = new PersonaDao();
+        TelefonoDao telefonoDao =new TelefonoDao();
+        Persona persona = personaEditada();
+        try {
+            personaDao.conectar();
+            personaDao.modificar(persona);
+            personaDao.desconectar();
+            //editamos sus telefonos
+            telefonoDao.conectar();
+            int id;
+            String nombre,numero;
+            //telefono 1
+            Telefono telefono1 = new Telefono();
+            if(!persona.getTelefono().isEmpty()){
+                id = persona.getTelefono().get(0).getIdTelefono();
+                nombre =persona.getTelefono().get(0).getNombre();
+                numero = persona.getTelefono().get(0).getNumero();
+                telefono1.setIdTelefono(id);
+                telefono1.setNombre(nombre);
+                telefono1.setNumero(numero);
+                telefonoDao.modificar(telefono1);
+            }
+            //telefono 2
+            if(persona.getTelefono().size()==2){
+                Telefono telefono2 = new Telefono();
+                id= persona.getTelefono().get(1).getIdTelefono();
+                nombre =persona.getTelefono().get(1).getNombre();
+                numero = persona.getTelefono().get(1).getNumero();
+                telefono2.setIdTelefono(id);
+                telefono2.setNombre(nombre);
+                telefono2.setNumero(numero);
+                telefonoDao.modificar(telefono2);
+            }
+            telefonoDao.desconectar();
+            cargarDatos();
+            limpiarPrincipal();
+            limpiarEdicion();
+            tool.alertaInfo("El contacto se ha actualizado correctamente");
+            modoEdicionContacto(false);
+        } catch (ClassNotFoundException e) {
+            tool.alertaError("Error crítico");
+        } catch (SQLException throwables) {
+            tool.alertaError("Error al conectar con la base de datos");
+        }
+
     }
     @FXML
     public void cancelarEdicion(){

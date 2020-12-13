@@ -81,7 +81,7 @@
                            </content>
                         </ScrollPane>
                         <Button fx:id="btEditarNotas" layoutX="344.0" layoutY="454.0" mnemonicParsing="false" onAction="#editarNotas" text="Editar notas" />
-                        <Button fx:id="btEditarContacto" disable="true" layoutX="414.0" layoutY="314.0" mnemonicParsing="false" onAction="#editarContacto" text="Editar contacto" />
+                        <Button fx:id="btEditarContacto" disable="true" layoutX="414.0" layoutY="314.0" mnemonicParsing="false" onAction="#entrarModoEdicion" text="Editar contacto" />
                         <Pane fx:id="pEditar" layoutX="14.0" layoutY="5.0" prefHeight="273.0" prefWidth="388.0" visible="false">
                            <children>
                               <TextField fx:id="txDireEdit" layoutX="59.0" layoutY="137.0" prefHeight="26.0" prefWidth="152.0" />
@@ -110,7 +110,7 @@
                               </Label>
                            </children>
                         </Pane>
-                        <Button fx:id="btAceptarEdit" layoutX="417.0" layoutY="352.0" mnemonicParsing="false" text="Aceptar" visible="false" />
+                        <Button fx:id="btAceptarEdit" layoutX="417.0" layoutY="352.0" mnemonicParsing="false" onAction="#editarContacto" text="Aceptar" visible="false" />
                         <Button fx:id="btCancelarEdit" layoutX="510.0" layoutY="352.0" mnemonicParsing="false" onAction="#cancelarEdicion" text="Cancelar" visible="false" />
                      </children>
                   </AnchorPane>
