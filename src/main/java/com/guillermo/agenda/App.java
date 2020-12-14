@@ -18,7 +18,7 @@ import java.io.IOException;
  */
 public class App extends Application {
     //atributo para controlar que no se inicia la aplicacion sin el login
-    public static boolean autorizado= false;
+    public static boolean isAutorizado = false;
     @Override
     public void init() throws Exception {
         super.init();
@@ -27,7 +27,7 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         loginUi();
-        if(!autorizado){
+        if(!isAutorizado){
             System.exit(0);
         }
         //me creo el loader para poder cargar la pantalla
@@ -64,10 +64,8 @@ public class App extends Application {
         ventana.initStyle(StageStyle.UNDECORATED);
         ventana.showAndWait();
     }
-    public static void main(String[] args) {
 
-        launch();
-    }
+
 
 }
 

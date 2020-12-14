@@ -12,7 +12,7 @@ import javafx.stage.Stage;
 
 import java.sql.SQLException;
 
-import static com.guillermo.agenda.App.autorizado;
+import static com.guillermo.agenda.App.isAutorizado;
 
 /**
  * @author Guillermo Suarez
@@ -46,7 +46,7 @@ public class LoginController {
                 return;
             }
             Stage ventana = (Stage) this.btAceptar.getScene().getWindow();
-            autorizado= true;
+            isAutorizado = true;
             ventana.close();
             } catch (SQLException throwables) {
             tool.alertaError("No se pudo conectar con la base de datos");
